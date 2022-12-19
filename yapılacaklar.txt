@@ -19,4 +19,4 @@ otopark-sahipleri -> kendi otoparklarını atarız, doluluk oranını ve ücretl
 üye
 
 ziyaretçi  
-xx
+
