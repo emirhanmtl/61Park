@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>61Park | Anasayfa</title>
+        <script src="https://api-maps.yandex.ru/2.1/?lang=tr_TR&apikey=2fadff1e-5b99-49e0-8f62-b8a3516b03b0">
+        </script>
+        <script>
+            function calculateRoute() {
+                // Başlangıç ve bitiş konumlarını alma
+                var start = document.getElementById("start").value;
+                var end = document.getElementById("end").value;
+              
+                // Yandex Maps API'sini kullanarak en kısa yolu hesaplama
+                ymaps.route([start, end]).then(function (route) {
+                  var distance = route.getLength(); // Yolun uzunluğunu alın (km cinsinden)
+                  var time = route.getTime(); // Yolculuğun süresini alın (dk cinsinden)
+              
+                  // Yolculuğun detaylarını gösterin
+                  alert("Yolculuğun mesafesi: " + distance + " km\nYolculuğun süresi: " + time + " dakika");
+              
+                  // Haritada en kısa yolu gösterin
+                  var map = new ymaps.Map("map", {
+                    center: start,
+                    zoom: 7
+                  });
+                  map.geoObjects.add(route);
+                });
+              }
+        </script>
+        <script type="text/javascript">
+            ymaps.ready(init);
+    var myMap;
+
+    function init() {
+        myMap = new ymaps.Map("map", {
+            center: [40.991861, 39.782143],
+            zoom: 12,
+            controls: ['routeButtonControl']
+        });
+        myMap.geoObjects.add(new ymaps.Placemark([40.991253, 39.779282], {
+            balloonContent: '<strong>' + "KahvemPark" + '</strong><br/>' + "<a href='rezervasyon.php'>Rezervasyon Yap</a> "
+        }, {
+            preset: 'default#image',
+            iconColor: '#0095b6'
+        }))
+        myMap.geoObjects.add(new ymaps.Placemark([40.9913759, 39.7776197], {
+            balloonContent: '<strong>' + "FikirhanePark" + '</strong><br/>' + "<a href='rezervasyon.php'>Rezervasyon Yap</a> "
+        }, {
+            preset: 'default#image',
+            iconColor: '#0095b6'
+        }))
+        myMap.geoObjects.add(new ymaps.Placemark([40.990705, 39.779076], {
+            balloonContent: '<strong>' + "SkyWayPark" + '</strong><br/>' + "<a href='rezervasyon.php'>Rezervasyon Yap</a> "
+        }, {
+            preset: 'default#image',
+            iconColor: '#0095b6'
+        }))
+        ;
+ 
+    }
+        </script>
+        <style>
+            .bn49 {
+                border: 0;
+                text-align: center;
+                display: inline-block;
+                padding: 14px;
+                width: 150px;
+                margin: 7px;
+                color: #ffffff;
+                background-color: #36a2eb;
+                border-radius: 8px;
+                font-family: "proxima-nova-soft", sans-serif;
+                font-weight: 600;
+                text-decoration: none;
+                transition: box-shadow 200ms ease-out;
+              }
+        </style>    
+        <link
+            href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+            rel="stylesheet"
+            type="text/css"
+            />
+        
+        <link rel="stylesheet" href="./css/nav-style.css">
+        <link rel="stylesheet" href="./css/gen-style.css">
+        <link rel="stylesheet" href="./css/op-style.css">
+
+    </head>
+    <body>
+        <header class="main-header">
+            <div class="header-wrapper">
+                <div class="main-logo"><a href=""><img src="./Untitled-1-1tyt.png" alt=""></div>
+                    <nav>
+                        <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+                        <ul class="main-menu">
+                            <li><a href="./hakkimizda.html">HAKKIMIZDA</a></li>
+                            <li><a href="./iletisim.html">İLETİŞİM</a></li>
+                            <li><a href="./login.php">ÜYE GİRİŞİ</a></li>
+                            <li><a href="./register.php">KAYIT OL</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <div class="contain">
+                <div id="map" style="width: 600px; height: 400px"></div>
+                <div>
+                    <div class="select">
+                        <select>
+                            <option value="1">Konaklar</option>
+                            <option value="2">Kalkınma</option>
+                            <option value="3">Meydan</option>
+                        </select>
+                    </div>
+                    <div class="select">
+                        <select>
+                            <option value="1">Ortahisar</option>
+                            <option value="2">Yomra</option>
+                            <option value="3">Akçaabat</option>
+                        </select>
+                    </div>
+                    <p>
+                    <button type="button" class="bn49" onclick="calculateRoute()">Otoparkları Göster</button>
+                </div>
+             
+         
+                
+            </div>
+        
+                
+                
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+            </script>
+            <script src="./js/nav-script.js"></script>
+        </body>
+    </html>
