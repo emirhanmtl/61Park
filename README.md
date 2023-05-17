@@ -1,4 +1,4 @@
 # 61Park
 Yazılım Mühendisliği Proje Ödevi
 
-Yunus Emre Atalay - Feyza Nur AYDIN - Emirhan MUTLU
+Yunus Emre ATALAY - Feyza Nur AYDIN - Emirhan MUTLU
